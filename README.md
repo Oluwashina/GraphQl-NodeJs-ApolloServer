@@ -51,19 +51,11 @@ This repository contains a basic setup for building a GraphQL API with Node.js a
 To start the server in development mode:
 
 ```bash
-npm run dev
+npm run start
 ```
 
-The server will start on `http://localhost:4000` by default. You can access the Apollo Studio at `http://localhost:4000/graphql` for testing queries and mutations.
+The server will start on `http://localhost:4000` by default. You can access the Apollo Studio at `https://studio.apollographql com/sandbox/explorer` for testing queries and mutations.
 
-### Building for Production
-
-To build and run the server in production mode:
-
-```bash
-npm run build
-npm start
-```
 
 ## Usage
 
@@ -76,10 +68,11 @@ To query all items:
 
 ```graphql
 query {
-  items {
+  users {
     id
     name
-    description
+    age
+    nationality
   }
 }
 ```
