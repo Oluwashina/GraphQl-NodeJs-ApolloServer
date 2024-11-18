@@ -31,6 +31,31 @@ const resolvers = {
                 (movie) => movie.yearOfPublication >= 2000 && movie.yearOfPublication <=2010
             )
         }
+    },
+    Mutation: {
+        createUser: (parent, args) => {
+            const user = {
+                id: UserList[UserList.length - 1].id + 1,
+                name: args.input.name,
+                username: args.input.username,
+                age: args.input.age,
+                nationality: args.input.nationality || 'BRAZIL',
+            }
+            UserList.push(user)
+            return user
+        },
+        updateUsername: (parent, args) => {
+            const user = _.find(UserList, {id: Number(args.input.id)})
+            if (user) {
+                user.username = args.input.newUsername
+                return user
+            }
+        },
+        deleteUser: (parent, args) => {
+            const id  = args.id
+            _.remove(UserList, (user) => user.id === Number(id))
+            return null
+        }
     }
  }
 
